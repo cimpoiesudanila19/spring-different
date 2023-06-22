@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+#  mongodb:
+#    image: mongo
+#    ports:
+#      - 27017:27017
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME=rootuser
+#      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+#  mongo-express:
+#    image: mongo-express
+#    restart: always
+#    ports:
+#      - 8082:8081
+#    environment:
+#      - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
+#      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
+#      - ME_CONFIG_MONGODB_SERVER=mongodb
+
+# image: mysql: указывает, что для сервиса "db" должен быть использован образ MySQL.
+# command: --default-authentication-plugin=mysql_native_password: Это команда, которая будет выполнена при запуске контейнера MySQL.
+# ports: - 3306:3306: Эта настройка определяет проброс портов между хостовой машиной и контейнером MySQL.
+# environment: MYSQL_ROOT_PASSWORD: example: Это переменная окружения, которая устанавливает пароль для учетной записи root в базе данных MySQL.
+
+# image: adminer: Это указывает, что для сервиса "adminer" должен быть использован образ Adminer, который предоставляет веб-интерфейс для управления базами данных.
+# restart: always: Эта настройка указывает Docker, что сервис "adminer" должен быть автоматически перезапущен в случае сбоя.
+# ports: - 8081:8080: Эта настройка определяет проброс портов между хостовой машиной и контейнером Adminer. Порт 8080 контейнера Adminer будет доступен по порту 8081 хостовой машины.
+

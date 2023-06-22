@@ -1,0 +1,32 @@
+Аннотации @GetMapping, @PostMapping, @PutMapping и @DeleteMapping являются частью Spring Framework и предоставляют удобные способы
+для определения методов обработки HTTP-запросов в контроллерах.
+
+@GetMapping: Аннотация используется для определения метода обработки HTTP GET запросов.
+@PostMapping: Аннотация используется для определения метода обработки HTTP POST запросов.
+@PutMapping: Аннотация используется для определения метода обработки HTTP PUT запросов.
+@DeleteMapping: Аннотация используется для определения метода обработки HTTP DELETE запросов.
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        // Логика для получения пользователя по идентификатору
+    }
+
+    @PostMapping
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        // Логика для создания нового пользователя
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        // Логика для обновления существующего пользователя
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        // Логика для удаления пользователя
+    }
+}
